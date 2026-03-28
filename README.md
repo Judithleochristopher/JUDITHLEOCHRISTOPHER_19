@@ -41,7 +41,9 @@ df['Age'] = current_date.year - df['Year_Birth']
 df['Purchases'] = (df['MntWines'] + df['MntFruits'] + df['MntMeatProducts'] +
                    df['MntFishProducts'] + df['MntSweetProducts'] + df['MntGoldProds'])
 **Feature 3: Membership (Customer Tier)**
+
 <img width="573" height="243" alt="image" src="https://github.com/user-attachments/assets/3d9ffb59-5dfe-4515-88fa-95e659a54429" />
+
 **Feature 4: Churn (Synthetic Target Label)**
 churn_prob = (
     0.45 * Recency_norm +           # Highest weight: hasn't purchased recently
@@ -54,10 +56,13 @@ churn_prob += np.random.normal(0, 0.02)
 df['Churn'] = (np.random.rand(len(df)) < churn_prob).astype(int)
 
 **Class Distribution**
+
 <img width="524" height="145" alt="image" src="https://github.com/user-attachments/assets/9595acd6-7d41-4470-89a0-def76285c836" />
+
 The dataset is well-balanced — no SMOTE or resampling is needed.
 
 **Membership Distribution**
+
 <img width="440" height="251" alt="image" src="https://github.com/user-attachments/assets/6f7ab31b-3eb8-4074-b9f9-9f9f25a90911" />
 
 ## 4.Save Final Dataset
@@ -67,6 +72,7 @@ df_final[['Age', 'Income', 'Purchases', 'Membership', 'Recency', 'Churn']].to_cs
 ## 5. Data Loading & Inspection
 df = pd.read_csv("customer_churn_final.csv")
 **Data Types**
+
 <img width="236" height="183" alt="image" src="https://github.com/user-attachments/assets/699c19e8-088b-401b-bde7-1cbf5f16bc4f" />
 
 ## 6. Exploratory Data Analysis
@@ -94,11 +100,14 @@ Age ↔ Churn: Weak — age alone is not a strong predictor in this dataset
 <img width="830" height="443" alt="image" src="https://github.com/user-attachments/assets/2b9b5cdd-ea62-400c-8cbc-86ba74251e77" />
 
 **Membership Count Plot**
+
 <img width="855" height="470" alt="image" src="https://github.com/user-attachments/assets/5590a48b-eb97-4f01-9b38-6e6e3de3fded" />
 
 ## 7. Data Preprocessing & Feature Encoding
 **Label Encoding (Exploratory)**
+
 <img width="305" height="133" alt="image" src="https://github.com/user-attachments/assets/cd3513fa-473f-4866-967b-ca0898db4998" />
+
 **One-Hot Encoding (Used for Models)**
 df_encoded = pd.get_dummies(df_final, columns=['Membership'])
 **Feature Scaling**
@@ -118,24 +127,36 @@ Three ML models are trained, tuned, and evaluated:
 - XGBoost Classifier
 
 <img width="596" height="647" alt="image" src="https://github.com/user-attachments/assets/bf5b6957-671a-4e26-b35a-e6772dc86d5e" />
+
 ## 10. Hyperparameter Tuning
 **Logistic Regression**
+
 <img width="500" height="53" alt="image" src="https://github.com/user-attachments/assets/2b0921ab-af3a-4bac-b18a-59fe6919a06c" />
 **Random Forest**
+
 <img width="963" height="54" alt="image" src="https://github.com/user-attachments/assets/6f27391c-c68c-48d2-b58d-d993fdca4fe9" />
 **XG Boost**
+
 <img width="1158" height="42" alt="image" src="https://github.com/user-attachments/assets/f3ab949b-b8f9-4436-a444-f0e22fe6e260" />
+
 
 ## 11. Rule-Based System
 Implemented both a rule-based system and machine learning models. The rule-based system provides interpretability, while ML models offer data-driven generalization. Comparing both helped evaluate model effectiveness.
 This performs well for clearly defined behavioral patterns but struggles with ambiguous cases, where machine learning models provide better generalization.
+
 ## 12. Model Evaluation — Detailed Results
+
 <img width="547" height="647" alt="image" src="https://github.com/user-attachments/assets/d6d9e960-126a-4b1b-b117-187ae07681f3" />
+
 **LR**
+
 <img width="802" height="517" alt="image" src="https://github.com/user-attachments/assets/cb777a22-d455-4ca4-a9de-88509e44133c" />
 **RF**
+
 <img width="813" height="527" alt="image" src="https://github.com/user-attachments/assets/d75ddf02-282e-4d26-aa1c-cfc8aada9dcc" />
+
 **XGB**
+
 <img width="823" height="524" alt="image" src="https://github.com/user-attachments/assets/45f65fe7-2c0a-4bcb-a0cc-56cb2180ab78" />
 
 ## 13. Model Comparison & Why Logistic Regression is better
@@ -175,6 +196,7 @@ The churn label was generated from a linear formula with Gaussian noise. With on
 *Model complexity should match data complexity. Since, Linear data - linear model wins.*
 
 ## 14. Prediction on New Customer
+
 <img width="741" height="501" alt="image" src="https://github.com/user-attachments/assets/793c1470-5a91-4a04-aaf0-3b2a0af225d3" />
 
 ## PROJECT STRUCTURE
