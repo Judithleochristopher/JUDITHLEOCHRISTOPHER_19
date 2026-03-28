@@ -177,7 +177,7 @@ XGB best max_depth=3 → very shallow, slow learning rate (0.05)
 All three models converged on their simplest, most constrained configurations. This collectively confirms the data does not reward complexity.
 
 5. AUC-ROC Gap Is Significant
-ModelAUC-ROCGap vs Random (0.5)Logistic Regression0.6664+0.1664XGBoost0.6398+0.1398Random Forest0.5751+0.0751
+Model AUC-ROC Gap vs Random (0.5)Logistic Regression 0.6664+0.1664 XGBoost 0.6398 + 0.1398 Random Forest 0.5751 + 0.0751
 LR's AUC advantage over RF (+0.09) is substantial. AUC measures rank-ordering ability across all thresholds — it's the most reliable single metric for binary classifiers on balanced datasets.
 
 6. Better Confusion Matrix for Business
@@ -193,6 +193,7 @@ This transparency is valuable in internship presentations and for business stake
 
 Root Cause Summary
 The churn label was generated from a linear formula with Gaussian noise. With only 8 features (5 real features + 4 binary membership flags after encoding), there is limited information for complex models to work with. XGBoost and RF attempt to model interaction terms and non-linear splits that simply don't exist in this data — they fit noise instead of signal, reducing test-set generalization.
+
 *Model complexity should match data complexity. Since, Linear data - linear model wins.*
 
 ## 14. Prediction on New Customer
