@@ -177,12 +177,12 @@ XGB best max_depth=3 → very shallow, slow learning rate (0.05)
 All three models converged on their simplest, most constrained configurations. This collectively confirms the data does not reward complexity.
 
 5. AUC-ROC Gap Is Significant
-Model AUC-ROC Gap vs Random (0.5)Logistic Regression 0.6664+0.1664 XGBoost 0.6398 + 0.1398 Random Forest 0.5751 + 0.0751
+Model AUC-ROC Gap vs Random (0.5) Logistic Regression 0.6664 + 0.1664 XGBoost 0.6398 + 0.1398 Random Forest 0.5751 + 0.0751
 LR's AUC advantage over RF (+0.09) is substantial. AUC measures rank-ordering ability across all thresholds — it's the most reliable single metric for binary classifiers on balanced datasets.
 
 6. Better Confusion Matrix for Business
 From the confusion matrices:
-ModelChurners Caught (TP)False Alarms (FP)Logistic Regression12071 XGBoost 11478 Random Forest11890
+Model Churners Caught (TP) False Alarms (FP) Logistic Regression 12071 XGBoost 11478 Random Forest 11890
 LR catches the most churners (120) while generating the fewest false alarms (71). In a real business, false alarms waste retention budget; missed churners mean lost customers. LR achieves the best trade-off.
 
 7. Explainability Advantage
